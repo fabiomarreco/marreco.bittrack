@@ -5,6 +5,8 @@ module Position =
     //PositionDU
     type Position = |Position of Map<Asset, decimal>
 
+    let empty = Position (Map.empty)
+
     let toAmountSeq (p:Position) =
         p |> function | Position m -> (m |> Map.toSeq |> Seq.map Amount)
 
@@ -12,12 +14,15 @@ module Position =
         amounts |> Seq.map (function | Amount(a, v) -> (a, v))
         |> Seq.groupBy fst
         |> Seq.map (fun (a, values) -> (a, values |> Seq.sumBy snd))
+        |> Seq.filter (fun (a, v) -> v <> 0M)
         |> Map.ofSeq |> Position
 
     let merge positions = 
         Seq.collect (toAmountSeq) positions |> ofAmountSeq
 
     let map p fn = toAmountSeq p |> Seq.map fn |> ofAmountSeq
+
+    let position seq = seq |> Seq.map (fun (a, v) -> Amount (a, v)) |> ofAmountSeq
 
     type Position with // redefining operators
         static member (+) (p1:Position, p2:Position) = 

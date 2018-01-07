@@ -2,7 +2,7 @@ module Tests
 
 open Expecto
 
-[<Tests>]
+//[<Tests>]
 let tests =
   testList "samples" [
     testCase "universe exists (╭ರᴥ•́)" <| fun _ ->

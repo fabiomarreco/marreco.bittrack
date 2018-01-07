@@ -13,6 +13,5 @@ module Transaction =
 
     let validTrasaction  = function 
      | { Id = id; Inputs = inputs; Outputs  = outputs} -> Some ({Id = id; Inputs = inputs; Outputs =  outputs})
-     | _ -> None
 
 
