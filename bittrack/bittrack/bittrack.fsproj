@@ -4,7 +4,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Currencies.fs" />
+    <Compile Include="Assets.fs" />
+    <Compile Include="Positions.fs" />
     <Compile Include="Accounts.fs" />
     <Compile Include="bittrack.fs" />
     <Compile Include="Transaction.fs" />
