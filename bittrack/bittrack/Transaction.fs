@@ -1,29 +1,18 @@
-module Transaction
+namespace Marreco.BitTrack
+open System
 
-open Currencies;
-open Accounts;
-open System;
+module Transaction = 
+    open Amount
 
-type Asset = 
-    | USD
-    | BTC
-    | BTG
-    | ETH
-    | SNT
-    | XMR
-    | NEO
+    type Address = | Address of System.Guid
+    type OutputId  = | OutputId of Guid
+    type TransactionId = | TransactionId of Guid
 
-type Amount  = | Amount of Asset * decimal
-type OutputId  = | OutputId of Guid
-type TransactionId = | TransactionId of Guid
+    type Output = { Id : OutputId; Amount : Amount; Address : Address}
+    type Transaction = { Id : TransactionId; Inputs : Transaction list; Outputs : Output list }
 
-type Output = { Id : OutputId; Amount : Amount; Address : Address}
-type Transaction = { Id : TransactionId; Inputs : Transaction list; Outputs : Output list }
-
-let (|TransactionOutput|_|) transaction = 
-
-let validTrasaction  = function 
- | { Id = id; Inputs = inputs; Outputs  = outputs} -> Some ({Id = id; Inputs = inputs; Outputs =  outputs})
- | _ -> None
+    let validTrasaction  = function 
+     | { Id = id; Inputs = inputs; Outputs  = outputs} -> Some ({Id = id; Inputs = inputs; Outputs =  outputs})
+     | _ -> None
 
 

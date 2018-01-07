@@ -5,10 +5,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets.fs" />
-    <Compile Include="Positions.fs" />
-    <Compile Include="Accounts.fs" />
+    <Compile Include="amount.fs" />
+    <Compile Include="position.fs" />
+    <Compile Include="transaction.fs" />
     <Compile Include="bittrack.fs" />
-    <Compile Include="Transaction.fs" />
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />
