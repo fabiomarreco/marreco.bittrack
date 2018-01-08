@@ -5,22 +5,18 @@ module Transaction
 open System;
 
 module Teste = 
-    type T1 = | T1 of int
-    type T2 = | T2 of int
-    with
-        static member (+) (a:T2, b:T2) = 
-            let a1 = a |> function T2 x -> x
-            let b1 = b |> function T2 x -> x
-            T2(a1 + b1)
-        static member (+) (a:T1, b:T2) = 
-            let a1 = a |> function T1 x -> x
-            let b1 = b |> function T2 x -> x
-            T2(a1 + b1)
+    type T1 = private |T1 of int
+    let create i = T1 (i)
+
 
 open Teste
-let t1 = T1 2;
-let t2 = T2 3;
-let x = t1 + t2
+
+let t = create (2)
+let x = match t with 
+        | T1 a -> a
+
+
+
 
 
 type Address = | Address of System.Guid

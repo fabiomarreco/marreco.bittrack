@@ -90,4 +90,11 @@ module PositionsTests =
            let am = Amount (BTC, 12M)
            let result = pos - am
            Expect.equal Position.empty result "Should be equal to expected"
+
+         testCase "Multiplying position by zero yield empty position" <| fun _ -> 
+           let pos = position [ (BTC, 12M); (ETH, 2M)]
+           let actual = pos * 0M
+           Expect.notEqual Position.empty pos "Initial position is not empty"
+           Expect.equal Position.empty actual "Should be equal to empty"
+           
     ]

@@ -1,3 +1,8 @@
+# Todo
+* [ ] Optimize position creation, avoid traversing
+
+----
+
 ```json
 {
     "last": "identification - 111",

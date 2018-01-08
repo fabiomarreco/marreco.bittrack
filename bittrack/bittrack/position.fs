@@ -3,7 +3,7 @@ module Position =
     open Assets
     open Amount
     //PositionDU
-    type Position = |Position of Map<Asset, decimal>
+    type Position = private |Position of Map<Asset, decimal>
 
     let empty = Position (Map.empty)
 
