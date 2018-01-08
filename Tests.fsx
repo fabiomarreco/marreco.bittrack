@@ -4,6 +4,24 @@ module Transaction
 //Domain module testing
 open System;
 
+module Teste = 
+    type T1 = | T1 of int
+    type T2 = | T2 of int
+    with
+        static member (+) (a:T2, b:T2) = 
+            let a1 = a |> function T2 x -> x
+            let b1 = b |> function T2 x -> x
+            T2(a1 + b1)
+        static member (+) (a:T1, b:T2) = 
+            let a1 = a |> function T1 x -> x
+            let b1 = b |> function T2 x -> x
+            T2(a1 + b1)
+
+open Teste
+let t1 = T1 2;
+let t2 = T2 3;
+let x = t1 + t2
+
 
 type Address = | Address of System.Guid
 let newAddress() = Guid.NewGuid() |> Address

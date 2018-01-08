@@ -63,11 +63,31 @@ module PositionsTests =
          testCase "Multiplication by one gives same position" <| fun _ -> 
            let p = position [ (BTC, 12M); (ETH, 3M)]
            let result = p * 1M
-           Expect.equal p result "Position should be empty"
+           Expect.equal p result "Position be equal"
          
          testCase "Multiplication by two gives new position" <| fun _ -> 
            let p = position [ (BTC, 12M); (ETH, 3M)]
            let result = p * 2M
            let expected = position [(BTC, 24M); (ETH, 6M)]
-           Expect.equal expected result "Position should be empty"
+           Expect.equal expected result "Position be equal to expected"
+
+         testCase "Adding new amount diffent asset to position creates new one" <| fun _ -> 
+           let pos = position [ (BTC, 12M)]
+           let am = Amount (ETH, 3M)
+           let result = pos + am
+           let expected = position [ (BTC, 12M); (ETH, 3M)]
+           Expect.equal expected result "Should be equal to expected"
+         
+         testCase "Subtracting new amount diffent asset to position creates new one" <| fun _ -> 
+           let pos = position [ (BTC, 12M)]
+           let am = Amount (ETH, 3M)
+           let result = pos - am
+           let expected = position [ (BTC, 12M); (ETH, -3M)]
+           Expect.equal expected result "Should be equal to expected"
+           
+         testCase "Subtracting current amount yield zero position" <| fun _ -> 
+           let pos = position [ (BTC, 12M)]
+           let am = Amount (BTC, 12M)
+           let result = pos - am
+           Expect.equal Position.empty result "Should be equal to expected"
     ]
