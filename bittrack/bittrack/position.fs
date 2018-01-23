@@ -35,3 +35,4 @@ module Position =
             [p1; invp2] |> merge
         static member (-) (p:Position, am:Amount) = 
             p + (am * -1M)        
+

@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../../paket-files/fsprojects/Chessie/src/Chessie/ErrorHandling.fs">
+      <Paket>True</Paket>
+      <Link>ErrorHandling.fs</Link>
+    </Compile>
     <Compile Include="Assets.fs" />
     <Compile Include="amount.fs" />
     <Compile Include="position.fs" />
